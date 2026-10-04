@@ -1,0 +1,54 @@
+/* Additional finish pass; base layout and responsive rules remain in style.css. */
+body{overflow-x:hidden;overscroll-behavior-y:contain}
+.brand{letter-spacing:.2px}
+.hero{isolation:isolate;background-image:radial-gradient(ellipse at 10% 90%,#c78b4d44 0 11%,transparent 11.5%),radial-gradient(ellipse at 90% 90%,#67c5d144 0 14%,transparent 14.5%),linear-gradient(155deg,#fffaf0f5,#ffe7c9f2)}
+.hero:before{z-index:-1;content:'✦  ·  ✧';text-shadow:0 100px #f4c85a55,180px 160px #f4c85a44}
+.hero:after{z-index:-1;content:'✧  ·  ✦';text-shadow:0 -100px #89c9dc55,-170px -140px #f4c85a44}
+.toy-scene{position:relative;z-index:1;filter:drop-shadow(0 10px 5px #795d3350)}
+.btn small{display:block;margin-top:2px;font-size:9px;letter-spacing:1.1px;opacity:.85}
+.card{user-select:none;-webkit-tap-highlight-color:transparent}
+.pick-check{display:none}
+.card.selected{animation:cardSelect .32s ease-out}
+.theme-preview{height:66px;margin:13px 0;border-radius:13px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(#162039,#9c7184);box-shadow:inset 0 1px 8px #ffffff40}
+.theme-dream .theme-preview{background:radial-gradient(circle at 72% 24%,#fff3b0 0 5%,transparent 6%),linear-gradient(#354b8b,#dcaed8)}
+.theme-neon .theme-preview{background:repeating-linear-gradient(90deg,#152641 0 18px,#3ce6cc 19px,#263f65 24px)}
+.theme-preview span{font-size:27px;filter:drop-shadow(0 3px 5px #0006)}
+.hud-pill{background:#fffcf0c9;border:1px solid #ffffffa8;backdrop-filter:blur(9px);box-shadow:0 5px 18px #1e214022, inset 0 1px #fff8;color:#443650}
+.canvas-box{box-shadow:0 18px 45px #1c234733,0 0 0 1px #fff}
+.game-overlay[hidden]{display:none}
+.panel{animation:panelEnter .34s cubic-bezier(.2,.8,.2,1) both}
+.summary-score{animation:scorePop .35s ease-out both}
+#hudScore{display:inline-block}
+.keyboard-hint{font-size:12px;letter-spacing:.35px}
+@keyframes panelEnter{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes cardSelect{50%{transform:scale(1.025)}}
+@keyframes scorePop{50%{transform:scale(1.18);color:#e86b7b}}
+@media(max-width:600px){
+  html,body{overflow-x:hidden}
+  .shell{padding:10px 12px calc(94px + env(safe-area-inset-bottom))}
+  .hero{min-height:470px;padding:28px 18px}
+  .game-hud{gap:5px;font-size:11px}
+  .hud-pill{padding:7px 9px;border-radius:12px}
+  .keyboard-hint{display:none}
+  .touch-controls{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;gap:12px;margin:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(0deg,#f9e7dff5,#f9e7dfc8);backdrop-filter:blur(12px)}
+  .touch-controls .btn{flex:1;max-width:210px;min-width:0;min-height:64px;font-size:17px;touch-action:manipulation;box-shadow:0 4px 0 #d7c6b9}
+  .panel{padding:23px 18px}
+  .button-row .btn{flex:1;min-height:48px}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .card{padding:13px;border-radius:16px}
+  .card .emoji{font-size:35px}
+  .theme-preview{height:48px}
+  .screen:has(.game-wrap){align-items:start;padding-top:6px}
+  .screen:has(.game-wrap) .game-wrap{padding-bottom:72px}
+  .game-hud:nth-of-type(2) .hud-pill{max-width:100%;overflow-wrap:anywhere}
+  .table-wrap{max-width:100%;overflow-x:auto}
+}
+@media(max-width:380px){
+  .shell{padding-left:9px;padding-right:9px}
+  .game-hud{font-size:10px}
+  .hud-pill{padding:6px 7px}
+  .hero h1{font-size:35px}
+  .hero .button-row{width:100%}
+  .hero .button-row .btn{padding:12px 10px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
